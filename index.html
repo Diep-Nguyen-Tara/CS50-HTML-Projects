@@ -1,0 +1,106 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Tracker</title>
+    <!-- Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iUNt1Ld4Uw6U/mI9meaJ8bYQbF5TtiB9TQUZxLGqz6ayYRBgJOMaLkD6" crossorigin="anonymous">
+    <style>
+        /* Additional custom styles */
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        form {
+            margin-bottom: 20px;
+            background-color: #e2f3f7;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        form label {
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+
+        .table th,
+        .table td {
+            border: 1px solid #007bff;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .table thead th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f0f8ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Birthday Tracker</h1>
+
+        <!-- Add a form for adding new birthdays -->
+        <form method="post" action="/">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="month">Birthday Month:</label>
+                    <select class="form-control" id="month" name="month" required>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="day">Birthday Day:</label>
+                    <input type="number" class="form-control" id="day" name="day" min="1" max="31" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Birthday</button>
+        </form>
+
+        <!-- Display birthdays in a table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Birthday</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for birthday in birthdays %}
+                <tr>
+                    <td>{{ birthday[1] }}</td>
+                    <td>{{ birthday[2] }} {{ birthday[3] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyIxNVCAa3QxjK2cBywIG1k2hJbRI1" crossorigin="anonymous"></script>
+</body>
+</html>
